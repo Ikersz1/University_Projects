@@ -1,0 +1,44 @@
+TUTORIAL PARA DESPLEGAR SD
+
+Primero, desplegamos los servidores:
+-1  ./bin/zookeeper-server-start.sh ./config/zookeeper.properties
+-2  ./bin/kafka-server-start.sh ./config/server.properties
+
+Segundo, el productor y el consumidor, creamos sus topics:
+
+-1  ./bin/kafka-topics.sh --create --topic customer_responses --bootstrap-server localhost:9092
+-2  ./bin/kafka-topics.sh --create --topic taxi_requests --bootstrap-server localhost:9092
+-3  ./bin/kafka-topics.sh --create --topic taxi_status --bootstrap-server localhost:9092
+-4  ./bin/kafka-topics.sh --create --topic taxi_instructions --bootstrap-server localhost:9092
+-5  ./bin/kafka-topics.sh --create --topic map_updates --bootstrap-server localhost:9092
+
+Tercero, desplegamos el programa.
+-1 python3 EC_Central.py --listen_port 8000 --kafka_bootstrap_servers localhost:9092 --locations_file EC_locations.json
+-2 python3 EC_DE.py localhost 8000 localhost:9092 9000 1
+-3 python3 EC_Costumer.py localhost:9092 a EC_Requests.json 10 10
+-4 sudo myenv/bin/python3 EC_S.py localhost 9000 
+
+
+COMANDO PARA VER LOS TOPICS CREADOS: bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+COMANDO PARA VER LOS MENSAJES DE UNO DE LOS TOPICS:
+bin/kafka-console-consumer.sh --topic <nombre_del_topic> --from-beginning --bootstrap-server localhost:9092
+
+COMANDO PARA ENTRAR EN EL ENTORNO VIRTUAL:
+source myenv/bin/activate
+
+ESQUEMA DE LOS TOPICS
+
+CLIENTE -> taxi_requests -> CENTRAL
+CLIENTE <- customer_responses <- CENTRAL
+
+TAXI -> taxi_status -> CENTRAL
+TAXI <- taxi_instructions <- CENTRAL
+
+PARA EL COMANDO DE RETORNO A LA BASE:
+                        self.kafka_producer.send('taxi_instructions', {
+                            'type': 'move_instruction',
+                            'taxi_id': taxi_id,
+                            'destination': [1, 1],
+                            'phase': 'return'
+                        })

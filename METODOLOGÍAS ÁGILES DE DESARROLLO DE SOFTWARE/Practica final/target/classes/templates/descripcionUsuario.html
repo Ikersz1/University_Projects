@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head (titulo='Descripción de usuario')"></head>
+
+<body>
+<div class="container">
+    <h2>Descripción de Usuario</h2>
+    <ul>
+        <li><strong>ID:</strong> <span th:text="${usuario.id}"></span></li>
+        <li><strong>Email:</strong> <span th:text="${usuario.email}"></span></li>
+        <li><strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span></li>
+        <li><strong>Fecha de Nacimiento:</strong> <span th:text="${usuario.fechaNacimiento}"></span></li>
+    </ul>
+    <a class="btn btn-link" th:href="@{/registrados}">Volver al listado</a>
+</div>
+
+<div th:replace="fragments::javascript"></div>
+
+</body>
+</html>

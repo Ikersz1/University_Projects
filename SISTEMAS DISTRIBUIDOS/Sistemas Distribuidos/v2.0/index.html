@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Cab Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        #map {
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+            background-color: #ccc;
+        }
+        .cell {
+            width: 45px;
+            position: relative;
+            background-color: white;
+            border: none;
+            border: 1px solid #000;
+        }
+        .cell.taxi {
+            background-color: green;
+        }
+        .cell.customer {
+            background-color: yellow;
+        }
+        .cell.location {
+            background-color: blue;
+        }
+        .cell .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #000;
+        }
+        .panel {
+            flex: 2;
+            padding: 1em;
+            overflow-y: auto;
+        }
+        .panel img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1em;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1em;
+        }
+        .table th, .table td {
+            border: 1px solid #000;
+            padding: 0.5em;
+            text-align: center;
+        }
+        .table th {
+            background-color: #f0f0f0;
+        }
+        .table td.taxi,
+        .table td.customer {
+            color: #000;
+            font-weight: normal;
+        }
+        .table td.taxi.ko,
+        .table td.taxi.end,
+        .table td.taxi.stop,
+        .table td.taxi.base {
+            background-color: #ffcccc;
+        }
+        .table td.taxi.disconnected {
+            background-color: #ffcc66;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="panel">
+        <img src="tarjeta.png" alt="Tarjeta">
+        <h2>Taxis</h2>
+        <table class="table" id="taxiTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Destino</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h2>Clientes</h2>
+        <table class="table" id="customerTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Destino</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        const mapElement = document.getElementById('map');
+        const taxiTableBody = document.getElementById('taxiTable').querySelector('tbody');
+        const customerTableBody = document.getElementById('customerTable').querySelector('tbody');
+
+        function updateMap(data) {
+            mapElement.innerHTML = '';
+            for (let y = 0; y < data.map.length; y++) {
+                for (let x = 0; x < data.map[y].length; x++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+
+                    const content = data.map[y][x];
+                    if (content === ' ') {
+                        // Empty cell
+                    } else if (typeof content === 'string') {
+                        cell.classList.add('location');
+                        const label = document.createElement('div');
+                        label.className = 'label';
+                        label.innerText = content;
+                        cell.appendChild(label);
+                    } else if (Array.isArray(content)) {
+                        if (content[0] === 'T') {
+                            cell.classList.add('taxi');
+
+                            const taxiId = content[1];
+                            const taxiInfo = data.taxis[taxiId];
+                            if (taxiInfo) {
+                                if (['KO', 'END', 'STOP', 'BASE'].includes(taxiInfo.status)) {
+                                    cell.style.backgroundColor = '#ffcccc';
+                                } else if (taxiInfo.status === 'DISCONNECTED') {
+                                    cell.style.backgroundColor = '#ffcc66';
+                                }
+                            }
+
+                            const label = document.createElement('div');
+                            label.className = 'label';
+                            if (taxiInfo && taxiInfo.customerId) {
+                                label.innerText = `${taxiId}${taxiInfo.customerId}`;
+                            } else {
+                                label.innerText = taxiId;
+                            }
+                            cell.appendChild(label);
+                        } else if (content[0] === 'C') {
+                            cell.classList.add('customer');
+                            const label = document.createElement('div');
+                            label.className = 'label';
+                            label.innerText = content[1];
+                            cell.appendChild(label);
+                        }
+                    }
+                    mapElement.appendChild(cell);
+                }
+            }
+        }
+
+        function updateTable(tableBody, items, columns) {
+            tableBody.innerHTML = '';
+            items.forEach(item => {
+                const row = document.createElement('tr');
+                columns.forEach(col => {
+                    const cell = document.createElement('td');
+                    cell.innerText = item[col] || '-';
+                    if (item.Estado === 'KO') {
+                        cell.classList.add('taxi', 'ko');
+                    } else if (item.Estado === 'END') {
+                        cell.classList.add('taxi', 'end');
+                    } else if (item.Estado === 'STOP') {
+                        cell.classList.add('taxi', 'stop');
+                    } else if (item.Estado === 'BASE') {
+                        cell.classList.add('taxi', 'base');
+                    } else if (item.Estado === 'DISCONNECTED') {
+                        cell.classList.add('taxi', 'disconnected');
+                    } else if (item.Estado === 'C') {
+                        cell.classList.add('customer');
+                    }
+                    row.appendChild(cell);
+                });
+                tableBody.appendChild(row);
+            });
+        }
+
+        async function fetchData() {
+            try {
+                const response = await fetch('http://localhost:4000/map');
+                const data = await response.json();
+
+                updateMap(data);
+                updateTable(taxiTableBody, Object.entries(data.taxis).map(([id, info]) => ({
+                    ID: id,
+                    Destino: info.destination,
+                    Estado: info.status
+                })), ['ID', 'Destino', 'Estado']);
+
+                updateTable(customerTableBody, Object.entries(data.customers).map(([id, info]) => ({
+                    ID: id,
+                    Destino: info.destination,
+                    Estado: info.status
+                })), ['ID', 'Destino', 'Estado']);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        setInterval(fetchData, 1000);
+    </script>
+</body>
+</html>
+

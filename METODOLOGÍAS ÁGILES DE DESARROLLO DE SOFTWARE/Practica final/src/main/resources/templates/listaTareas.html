@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head (titulo='Listado de tareas')">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+<div th:replace="fragments :: navbar"></div>
+
+<div class="container-fluid">
+
+    <div class="row mt-3">
+        <div class="col">
+            <h2 th:text="'Listado de tareas de ' + ${usuario.nombre}"></h2>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="ordenarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ordenar por Prioridad
+                </button>
+                <div class="dropdown-menu" aria-labelledby="ordenarDropdown">
+                    <a class="dropdown-item" th:href="@{/usuarios/{id}/tareas(id=${usuario.id}, ordenarPorPrioridad=true, orden='ASC')}">Ascendente</a>
+                    <a class="dropdown-item" th:href="@{/usuarios/{id}/tareas(id=${usuario.id}, ordenarPorPrioridad=true, orden='DESC')}">Descendente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Tarea</th>
+                    <th>Prioridad</th>
+                    <th class="text-center">Destacar</th>
+                    <th>Acción</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tarea : ${tareas}" th:classappend="${tarea.destacado} ? 'destacada' : 'normal-row'">
+                    <td th:text="${tarea.id}"></td>
+
+                    <td>
+                        <span th:text="${tarea.titulo}"></span>
+                        <!-- Botón Crear Subtarea -->
+                        <a class="btn btn-secondary btn-sm ml-2" th:href="@{/tareas/{id}/subtareas/nueva(id=${tarea.id})}">
+                            Crear Subtarea
+                        </a>
+                        <ul>
+                            <!-- Listado de subtareas -->
+                            <li th:each="subtarea : ${tarea.subtareas}" class="my-3"> <!-- Añadido my-3 para margen arriba y abajo -->
+                                <span th:text="${subtarea.nombre}"></span>
+                                <!-- Botón Eliminar Subtarea -->
+                                <button class="btn btn-danger btn-sm" style="cursor: pointer; margin-left: 10px;"
+                                        th:onclick="'del(\'/subtareas/' + ${subtarea.id} + '\')'">
+                                    Borrar
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                    
+                    <!-- Prioridad con estilos e integrado con formulario -->
+                    <td>
+                        <form method="post" th:action="@{/tareas/{id}/prioridad(id=${tarea.id})}" style="display: inline;">
+                            <select name="prioridad" class="form-control form-control-sm" style="font-weight: bold; color:
+                                [[${tarea.prioridad == 'ALTA'} ? 'red' : tarea.prioridad == 'MEDIA' ? 'orange' : 'green']];"
+                                    onchange="this.form.submit()">
+                                <option value="1" th:selected="${tarea.prioridad == 'ALTA'}">Alta</option>
+                                <option value="2" th:selected="${tarea.prioridad == 'MEDIA'}">Media</option>
+                                <option value="3" th:selected="${tarea.prioridad == 'BAJA'}">Baja</option>
+                            </select>
+                        </form>
+                    </td>
+                    
+                    <!-- Checkbox de destacado -->
+                    <td class="text-center">
+                        <input type="checkbox" th:checked="${tarea.destacado}"
+                               th:onclick="'toggleDestacar(' + ${tarea.id} + ', this.checked)'">
+                    </td>
+                    
+
+                    <!-- Acciones de editar y borrar -->
+                    <td>
+                        <a class="btn btn-primary btn-sm" th:href="@{/tareas/{id}/editar(id=${tarea.id})}">Editar</a>
+                        <button class="btn btn-danger btn-sm" style="cursor: pointer;"
+                                th:onclick="'del(\'/tareas/' + ${tarea.id} + '\')'">Borrar</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                <a class="btn btn-primary" th:href="@{/usuarios/{id}/tareas/nueva(id=${usuario.id})}">Nueva tarea</a>
+                <a class="btn btn-link" href="/logout">Salir</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${!#strings.isEmpty(mensaje)}">
+                <span th:text="${mensaje}"></span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments :: javascript"></div>
+
+<script type="text/javascript">
+    function del(urlBorrar) {
+        if (confirm('¿Estás seguro/a de que quieres eliminar este elemento?')) {
+            fetch(urlBorrar, {
+                method: 'DELETE'
+            }).then((res) => location.reload());
+        }
+    }
+
+    function toggleDestacar(id, destacar) {
+        fetch(`/tareas/${id}/destacar?destacar=${destacar}`, {
+            method: 'POST'
+        }).then((res) => {
+            if (res.ok) {
+                location.reload();
+            }
+        });
+    }
+</script>
+
+<style>
+    .destacada {
+        background-color: #FFF9C4; /* Fondo amarillo-naranja para tareas destacadas */
+        font-weight: bold; /* Texto en negrita */
+        border-left: 5px solid #FFECB3; /* Borde izquierdo de color naranja oscuro */
+    }
+
+    .normal-row {
+        background-color: #f8f9fa; /* Color alternado para filas normales */
+    }
+
+    .thead-light {
+        background-color: #f8f9fa;
+    }
+
+    .text-center {
+        vertical-align: middle; /* Centrar texto y checkbox verticalmente */
+    }
+
+    .my-3 {
+        margin-top: 10px;
+        margin-bottom: 10px; /* Márgenes arriba y abajo de 10px */
+    .form-control-sm {
+        display: inline-block;
+        width: auto;
+    }
+
+    .dropdown-toggle {
+        margin-right: 10px;
+    }
+
+    .dropdown-item {
+        cursor: pointer;
+    }
+</style>
+
+</body>
+</html>

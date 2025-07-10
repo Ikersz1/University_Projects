@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head (titulo='Renombrar Equipo')"></head>
+<body>
+<!-- Barra de menú -->
+<div th:replace="fragments :: navbar"></div>
+
+<div class="container mt-3">
+    <h2>Renombrar Equipo</h2>
+    <form th:action="@{'/equipos/' + ${equipo.id} + '/editar'}" method="post">
+        <div class="form-group">
+            <label for="nuevoNombre">Nuevo nombre del equipo:</label>
+            <input type="text" id="nuevoNombre" name="nuevoNombre" class="form-control" th:value="${equipo.nombre}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a th:href="@{equipos/gestion-equipos}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+<div th:replace="fragments :: javascript"></div>
+</body>
+</html>

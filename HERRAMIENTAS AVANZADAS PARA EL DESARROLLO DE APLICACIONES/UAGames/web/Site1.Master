@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="web.Site1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
+
+
+<!DOCTYPE html>
+
+<html lang="es" dir="ltr" class="h-100">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>UAGames</title>
+    <link rel="icon" type="image/png" sizes="24x24" href="~/assets/imagenes/iconos/game.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="d-flex flex-column justify-content-between h-100">
+    <form id="form1" runat="server">
+        <header class="navbar navbar-expand-lg navbar-primary bd-navbar sticky-top bg-primary border-bottom border-primary">
+            <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+                <asp:HyperLink NavigateUrl="Inicio.aspx" class="d-flex align-items-center mb-2 mb-md-0 text-white text-decoration-none navbar-brand p-0 me-0 me-lg-2 bg-primary" Style="font-weight: bold;" Text="UA Games" runat="server" />
+                <div class="d-flex bg-primary">
+                    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <div class="offcanvas-lg offcanvas-end flex-grow-1 bg-primary" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+                    <div class="offcanvas-header px-4 pb-0">
+                        <h1 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel"><strong>UA Games</strong></h1>
+                        <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                    </div>
+
+                    <div class="offcanvas-body p-4 pt-0 p-lg-0 bg-primary">
+                        <hr class="d-lg-none text-white-50 bg-primary">
+                        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav ms-md-auto text-white bg-primary">
+                            <asp:Menu ID="menu" runat="server" Orientation="Horizontal" Visible ="true">
+                                <StaticMenuItemStyle HorizontalPadding="20"/>
+                                <Items>
+                                    <asp:MenuItem Text="Catalogo" NavigateUrl="Catalogo.aspx" />
+                                    <asp:MenuItem Text="Noticias" NavigateUrl="NoticiaWF.aspx" />
+                                    <asp:MenuItem Text="Foro" NavigateUrl="Foro_Publico.aspx" />
+                                </Items>
+                                <LevelMenuItemStyles>
+                                    <asp:MenuItemStyle CssClass="nav-link py-2 px-0 px-lg-2 link-primary text-white fs-5 bg-primary" />
+                                    <asp:MenuItemStyle CssClass="nav-link py-2 px-0 px-lg-2 link-primary text-white bg-primary fs-6" />
+                                </LevelMenuItemStyles>
+                            </asp:Menu>
+                            <asp:Menu ID="menuUsuario" runat="server" Orientation="Horizontal" Visible ="false">
+                                <StaticMenuItemStyle HorizontalPadding="20"/>
+                                <Items>
+                                    <asp:MenuItem Text="Catalogo" NavigateUrl="Catalogo.aspx" />
+                                    <asp:MenuItem Text="Noticias" NavigateUrl="NoticiaWF.aspx" />
+                                    <asp:MenuItem Text="Foro" NavigateUrl="Foro_Publico.aspx" />
+                                    <asp:MenuItem Text="Mis Reservas" NavigateUrl="Reserva.aspx" />
+                                </Items>
+                                <LevelMenuItemStyles>
+                                    <asp:MenuItemStyle CssClass="nav-link py-2 px-0 px-lg-2 link-primary text-white fs-5 bg-primary" />
+                                    <asp:MenuItemStyle CssClass="nav-link py-2 px-0 px-lg-2 link-primary text-white bg-primary fs-6" />
+                                </LevelMenuItemStyles>
+                            </asp:Menu>
+                             <asp:Menu ID="menuAdmin" runat="server" Orientation="Horizontal" Visible="false">
+                                <StaticMenuItemStyle HorizontalPadding="20"/>
+                                <Items>
+                                    <asp:MenuItem Text="Administrador">
+                                        <asp:MenuItem Text="Videojuegos" NavigateUrl="AdminVideojuegos.aspx" />
+                                        <asp:MenuItem Text="Ofertas" NavigateUrl="AdminOfertas.aspx" />
+                                        <asp:MenuItem Text="Usuarios" NavigateUrl="AdminUsuarios.aspx"  />
+                                        <asp:MenuItem Text="Foros" NavigateUrl="AdminForos.aspx" />
+                                        <asp:MenuItem Text="Compras" NavigateUrl="Compras.aspx" />
+                                         <asp:MenuItem Text="Top 10" NavigateUrl="Top10Compras.aspx" />
+                                        <asp:MenuItem Text="Categorias" NavigateUrl="AdminCategoria.aspx" />
+                                        <asp:MenuItem Text="Productoras" NavigateUrl="ProductoraWebForm.aspx" />
+                                        <asp:MenuItem Text="Noticias" NavigateUrl="AdminNoticias.aspx" />
+                                    </asp:MenuItem>
+                                </Items>
+                                <LevelMenuItemStyles>
+                                    <asp:MenuItemStyle CssClass="nav-link py-2 px-0 px-lg-2 link-primary text-white fs-5 bg-primary" />
+                                    <asp:MenuItemStyle CssClass="nav-link py-2 px-0 px-lg-2 link-primary text-white bg-primary fs-6" />
+                                </LevelMenuItemStyles>
+                            </asp:Menu>
+                        </ul>
+
+                        <ul class="navbar-nav flex-row flex-wrap ms-md-auto bg-primary">
+                            <li class="nav-item col-6 col-lg-auto">
+                                <asp:Label ID="MenuNoSesion" runat="server">
+                                    <!-- Authentication Links -->
+                                    <asp:Button ID="BtnIniciarSesion" CssClass="btn btn-light text-primary me-2" Text="Iniciar sesion" runat="server" OnClick="BtnIniciarSesion_Click" />
+                                    <asp:Button ID="BtnRegistrarse" CssClass="btn btn-light text-primary me-2" Text="Registrarse" runat="server" OnClick="BtnRegistrarse_Click" />
+                                </asp:Label>
+
+                                <asp:Label ID="MenuSesion" runat="server">
+                                    <asp:ImageButton ID="BtnCart" CssClass="bg-light rounded me-2" runat="server" AlternateText="Cart" ImageAlign="middle" Style="height: 3rem;" ImageUrl="assets/imagenes/iconos/cart.png" OnClick="clickCart" />
+                                    <asp:ImageButton ID="BtnLista" CssClass="bg-light rounded me-2" runat="server" AlternateText="WishList" ImageAlign="middle" Style="height: 3rem;" ImageUrl="assets/imagenes/iconos/starEmpty.png" OnClick="clickLista" />
+                                    <asp:ImageButton ID="BtnSalir" CssClass="bg-light rounded me-2" runat="server" AlternateText="LogOut" ImageAlign="middle" Style="height: 3rem;" ImageUrl="assets/imagenes/iconos/logOut.png" OnClick="clickLogOut" />
+                                </asp:Label>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="flex-shrink-0 py-4 bg-light overflow-auto text-primary">
+            <asp:ContentPlaceHolder ID="main" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+
+        <footer class="footer mt-auto py-3 text-white bg-primary border-top border-primary">
+            <div class="container bg-primary">
+                <div class="row">
+                    <div class="col-5">
+                        <asp:HyperLink NavigateUrl="Inicio.aspx" class="text-white text-decoration-none" Style="font-weight: bold; font-size: 30px;" Text="UA Games" runat="server" />
+                    </div>
+                    <div class="col mb-3">
+                        <h5 class="text-decoration-underline">Servicios</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="Catalogo.aspx" class="nav-link p-0 text-white">Catálogo</a></li>
+                            <li class="nav-item mb-2"><a href="NoticiaWF.aspx" class="nav-link p-0 text-white">Noticias</a></li>
+                            <li class="nav-item mb-2"><a href="Foro_Publico.aspx" class="nav-link p-0 text-white">Foro</a></li>
+                        </ul>
+                    </div>
+                    <div class="col mb-3">
+                        <h5 class="text-decoration-underline">Compañía</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="Contacto.aspx" class="nav-link p-0 text-white">Contacto</a></li>
+                            <li class="nav-item mb-2"><a href="PreguntasFrec.aspx" class="nav-link p-0 text-white">Preguntas frecuentes</a></li>
+                            <li class="nav-item mb-2"><a href="SobreNosotros.aspx" class="nav-link p-0 text-white">Sobre nosotros</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row border-top border-light">
+                    <div class="col align-middle">
+                        <span class="text-white align-middle">&copy; 2023 <a href="#" class="text-white text-decoration-none">UA Games</a>, Inc. All rights reserved</span>
+                    </div>
+                    <div class="col text-left align-middle">
+                        <span class="text-white align-middle">
+                            <a href="Privacidad.aspx" class="text-decoration-none text-white align-middle">Política de privacidad</a>
+                            <a href="Terminos.aspx" class="text-decoration-none text-white align-middle">Términos y condiciones</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

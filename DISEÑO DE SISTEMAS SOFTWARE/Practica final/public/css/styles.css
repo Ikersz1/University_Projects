@@ -1,0 +1,1097 @@
+/* Estilos existentes */
+
+
+
+.w3-teal {
+    background-color: #ff3823 !important;
+    position: relative;
+}
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white; /* Cambia según tu esquema de color */
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background-color: #008080; /* Color Teal */
+}
+.icon-link i {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+    font-size: 1.5em; /* Tamaño del icono */
+}
+.w3-dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0; /* Alinea el contenido del desplegable a la derecha del botón */
+    z-index: 1000; /* Asegura que el desplegable esté sobre otros elementos */
+}
+
+
+.w3-sidebar {
+    background-color: #ff3823 !important;
+    position: relative;
+}
+
+#mySidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#mySidebar .SidebarSection {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-around;*/
+}
+
+#mySidebar .SidebarDownSection {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+.w3-bar-item.dropdownButton {
+    color: #ff3823 !important;
+    background-color: white;
+    display: block;
+    padding: 0 15px;
+}
+
+.dropdownButton:hover {
+    color: black;
+}
+
+/* Nuevo estilo para los enlaces de la barra lateral */
+.w3-sidebar .w3-bar-item {
+    background-color: #ff3823; /* Fondo del color de la página */
+    border: 2px solid white; /* Bordes blancos */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 1px; /* Espaciado interno */
+    margin-bottom: 10px; /* Aumenta el espacio entre elementos */
+    color: white; /* Texto blanco para mayor legibilidad */
+    text-align: center; /* Centrado de texto */
+    transition: background-color 0.3s ease; /* Suaviza la transición del color de fondo */
+}
+.w3-sidebar .w3-bar-item:hover {
+    background-color: #e63946; /* Un tono más claro de rojo al hacer hover */
+    color: white; /* Texto blanco al hacer hover */
+}
+.w3-bar-item.w3-button.w3-large {
+    margin-top: 10px; /* Aumenta o disminuye según la cantidad de espacio que necesites */
+}
+/* Asegurarse de que la barra lateral no tenga un fondo definido para mostrar correctamente los colores */
+.w3-sidebar {
+    background: none;
+}
+button.icon-link .fa-chevron-down {
+    font-size: 0.8em; 
+    margin-left: 10px;
+}
+/* Continuación de los estilos existentes */
+.w3-bar-item,
+.rectangle-button {
+    font-size: 15px !important;
+    padding: 12px 20px !important;
+    color: white !important;
+    font-weight: bold !important; 
+}
+
+.w3-bar-item:hover,
+.rectangle-button:hover {
+    background-color: white !important;
+    color: #ff3823 !important;
+}
+
+@media (max-width: 600px) {
+    .w3-bar-item,
+    .rectangle-button {
+        font-size: 18px !important;
+        padding: 10px 15px !important;
+        color: white !important;
+    }
+}
+
+.horizontal-line-1 {
+    display: block;
+    width: 242px;
+    height: 0px;
+    border-top: 2px solid #FFFFFF;
+    margin: auto;
+}
+
+.contenedor-imagenes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 20px; 
+    margin-right: 20px;
+    transition: border-color 1s; 
+    transition: transform 1s;
+  }
+  
+.contenedor-imagenes img {
+    width: 50px; 
+    height: 50px; 
+    border: 2px solid black; 
+    border-radius: 50%; 
+    padding: 5px; 
+ }
+
+ .contenedor-imagenes img:hover {
+    border-color: white;
+    animation: tumbado 0.3s ease forwards; 
+  }
+  
+  @keyframes tumbado {
+    0% {
+      transform: none;
+    }
+    100% {
+      transform: scale(1.2);
+    }
+  }
+  
+
+/* Nuevo estilo para el contenedor de la barra lateral */
+/* Agrega esta regla para el estado hover */
+
+.w3-container h1 {
+    text-align: left;
+    /* Centra el título */
+    font-size: 50px;
+    /* Aumenta el tamaño de la fuente */
+    margin-top: 1px;
+    /* Ajusta el margen superior según necesites */
+}
+
+.bottom-links {
+    position: absolute;
+    bottom: 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Estilos para el hover del botón de la barra lateral */
+#openNav {
+    background-color: #ff3823;
+    /* Color de fondo original: rojo */
+    color: white !important;
+    /* Color del texto original: blanco */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Transición suave */
+}
+
+/* Estilos para el hover del botón de la barra lateral */
+#openNav:hover {
+    background-color: white !important;
+    /* Fondo blanco al hacer hover */
+    color: #ff3823 !important;
+    /* Texto rojo al hacer hover */
+}
+
+/* Roboto Flex con peso 400 */
+.roboto-flex-title {
+    flex-grow: 1;
+    margin: 0;
+    text-align: center;
+
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /* Peso de la fuente */
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "wdth" 100,
+        "GRAD" 0,
+        "XOPQ" 96,
+        "XTRA" 468,
+        "YOPQ" 79,
+        "YTAS" 750,
+        "YTDE" -203,
+        "YTFI" 738,
+        "YTLC" 514,
+        "YTUC" 712;
+}
+
+/* Hurricane para uso regular */
+.hurricane-regular {
+    font-family: "Hurricane", cursive;
+    font-weight: 400;
+    /* Aunque Hurricane solo tiene un peso, es buena práctica especificarlo */
+    font-style: normal;
+}
+
+
+.noticias-1 {
+    
+    width: 132px;
+    height: 31px;
+    color: #EBEBEB;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.rectangle-9 {
+    width: 243px;
+    height: 61px;
+    padding: 8px;
+    background: #00000000;
+    border-color: #EBEBEB;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rectangle-button {
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    background-color: #ff3823 !important;
+    color: white !important;
+    font-size: 18px !important;
+    border: none !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    margin: 4px 2px !important;
+    cursor: pointer !important;
+    transition-duration: 0.4s !important;
+}
+
+.rectangle-button:hover {
+    background-color: white !important;
+    color: #ff3823 !important;
+}
+
+.team-primary {
+    background-color: #007bff !important;
+}
+
+.team-warning {
+    background-color: #ffc107 !important;
+}
+
+.team-success {
+    background-color: #28a745 !important;
+}
+
+.team-danger {
+    background-color: #dc3545 !important;
+}
+
+.links-noticias a{
+    color: #ff3823;
+}
+
+.links-noticias a:hover {
+    color: #ff3823;
+    text-decoration: underline; /* Subraya el texto al pasar el ratón */
+}
+
+.noticia {
+    background-color:white;
+    border: 2px solid #ccc; /* Borde alrededor de cada noticia */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 20px; /* Margen inferior para separar noticias */
+    overflow: hidden; /* Para limpiar el float de la imagen */
+}
+
+.noticia h2 {
+    margin-top: 0; /* Elimina el margen superior del título */
+}
+
+.noticia h2 a{
+    color: #ff3823;
+}
+
+.noticia img {
+    float: right; /* Mover la imagen a la derecha */
+    max-height: 100%;
+    float: right; /* Mover la imagen a la derecha */
+    margin-left: 10px; /* Espacio entre la imagen y el contenido */
+    width: 280px; /* Ancho de la imagen */
+    border-radius: 5px; /* Bordes redondeados */
+
+}
+
+.noticia p {
+    margin: 0; /* Elimina los márgenes de los párrafos */
+    font-size: 1.1em; /* Tamaño de letra para el contenido de la noticia */
+}
+
+.noticia p:last-child {
+    font-size: 0.8em; /* Tamaño de letra más pequeño para el autor y la fecha */
+    color: #888; /* Color gris para el autor y la fecha */
+}
+
+.noticia .descripcion {
+    text-align: justify; /* Justifica el texto de la descripción */
+    padding-bottom: 5px; /* Espacio inferior para separar la línea de la descripción */
+}
+
+.noticia-info-extra {
+    display: flex; /* Utilizar flexbox */
+    align-items: end; /* Alinear los elementos en la línea base */
+    position: absolute; /* Posicionamiento absoluto */
+}
+
+.noticia-info-extra p {
+    display: inline; /* Alinear elementos en la misma línea */
+    font-size: 0.8em; /* Tamaño de letra más pequeño */
+    color: #888; /* Color gris */
+}
+
+.noticia-info-extra .noticia-autor::after {
+    content: " - "; /* Agregar el guion como contenido después del autor */
+}
+
+/* Estilos para inicio de sesión */
+.tarjeta {
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.encabezado-tarjeta {
+    background-color: #ff3823;
+    text-align: center !important;
+    color: #fff;
+    padding: 20px 0;
+    /* Agrega relleno arriba y abajo de 20px */
+}
+
+.boton-inicio,
+.boton-registro,
+.boton-cancelar {
+    background-color: #ffffff;
+    color: #ff3823;
+    border-color: #ff3823;
+}
+
+.boton-inicio:hover,
+.boton-registro:hover,
+.boton-cancelar:hover {
+    background-color: #f1706270;
+    color: #ffffff;
+    border-color: #ff3823;
+}
+
+/*Estilo dropdown cerrar sesion*/
+#userDropdown {
+    background-color: transparent;
+    color: black;
+    margin-left: 15px;
+    margin-top: 5px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+#userButton {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none !important;
+}
+
+#dropdownContent-cerrarSesion {
+    background-color: #ff3823;
+    border: 2px solid black;
+    margin-top: 10px;
+}
+
+#logoutButton {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.user-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    transition: filter 0.3s ease;
+}
+
+.user-icon:hover {
+    color: #ff3823 !important;
+} 
+
+#userDropdown:hover {
+    background-color: #ff3823 ; /* Mantiene el color de fondo al pasar el ratón */
+}
+
+#userButton:hover {
+    background-color: transparent; /* Mantiene el color de fondo al pasar el ratón */
+    color: #ff3823;
+}
+
+
+/*CRUD USUARIOS*/
+.tarjeta-agregar-usuarios {
+    border-color: #ff3823 !important;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.encabezado-tarjeta-usuarios {
+    background-color: #ff9688;
+    text-align: center !important;
+    color: #ffffff;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.boton-agregar {
+    width: 100%;
+    /* Ancho fijo del botón */
+    margin-left: auto;
+    /* Margen izquierdo automático */
+    margin-right: auto;
+    /* Margen derecho automático */
+    color: #ff6961;
+    border-color: #ff3823;
+}
+
+.boton-editar {
+    color: #ff6961;
+    border-color: #ff3823;
+}
+
+.boton-agregar:hover,
+.boton-editar:hover {
+    background-color: #ff6961;
+    color: #fff;
+    border-color: #ff3823;
+}
+
+.boton-actualizar-usuarios {
+    background-color: #ff9688 !important;
+    color: white;
+    
+}
+
+.boton-actualizar-usuarios:hover {
+    background-color: white;
+    color: black;
+}
+
+.btn-elliminar i {
+    color: #ff3823; 
+    font-size: 50px;
+}
+
+.checked-red {
+    background-color: #ff3823;
+}
+
+/*Barra búsqueda*/
+.boton-buscar {
+    background-color: #fff;
+    color: #ff3823;
+    border-color: #ff3823;
+    margin-top: 3rem;
+}
+.boton-buscar:hover {
+    background-color: #f1706270;
+    color: #fff;
+    border-color: #ff3823;
+}
+
+.buscador {
+    margin-top: 3rem;
+    width: auto;
+}
+.w3-dropdown-hover {
+    position: relative;
+}
+
+#ordenarNombre {
+    color: black;
+    font-weight: bold;
+}
+.navbar-text {
+    display: flex;
+    align-items: center;
+}
+/* VISTA CALENDARIO */
+
+/* Estilos para la fila de navegación */
+.jornada-navegacion {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 10px;
+    margin: 0 auto; /* Margen automático para centrar horizontalmente */
+    width: 61%; /* Ancho máximo del contenedor */
+}
+
+/* Estilos para "Jornada Anterior" */
+.jornada-anterior {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #eaeaea;
+    border: 2px solid #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-right: auto; /* Alinea a la izquierda */
+    display: inline-block;
+}
+
+/* Estilos para "Jornada Siguiente" */
+.jornada-siguiente {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #eaeaea;
+    border: 2px solid #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-left: auto; /* Alinea a la derecha */
+    display: inline-block;
+}
+
+/* Estilos para el selector de jornada actual */
+.jornada-actual {
+    color: #000000;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #eaeaea;
+    border: 2px solid #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.jornada-actual:hover {
+    background-color: #cccbcb;
+    border-color: #c9c9c9;
+    color: #000000;
+    text-decoration: none;
+}
+
+/* Cambia el fondo y el borde a blanco al pasar el ratón por encima */
+.jornada-anterior:hover,
+.jornada-siguiente:hover {
+    background-color: #da9797;
+    border-color: #eaeaea;
+    color: #000000;
+    text-decoration: none;
+}
+
+.fila-par {
+    background-color: #f8f9fa; /* Color de fondo para filas pares */
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.fila-impar {
+    background-color: #e0e0e0; /* Color de fondo para filas impares */
+    vertical-align: middle;
+}
+
+.partido-hover:hover {
+    background-color: #000000;
+}
+
+.prediccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.prediccion-resultados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circulo-equipo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 18px;
+    background-color: #646464;
+    color: #ffffff;
+    margin: 10px;
+}
+
+.prediccion-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.equipo-info {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: end;
+}
+
+.barra-progreso {
+    width: 60%; /* Ancho máximo de la barra de progreso */
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: auto auto auto 40px;
+}
+
+.relleno {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #ff3823;
+    transition: width 0.3s ease; /* Transición suave al cambiar el ancho */
+}
+
+.porcentajeFinal {
+    width: 10%;
+}
+
+
+/*ESTILOS VISTA FAVORITOS*/
+.texto-h1-favoritos {
+    text-align: center;
+    font-size: 2.3rem;
+    margin: 2rem;
+}
+
+.tarjeta-favoritos {
+    border: 2px solid #ff3823; /* Borde rojo de 2px */
+    border-radius: 8px; /* Borde redondeado */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado inferior */
+    position: relative; /* Hace que los elementos posicionados dentro de esta tarjeta sean relativos a ella */
+}
+
+.tarjeta-favoritos-nombreEquipo {
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.cuerpo-tarjetas-favoritos {
+    text-align: center;
+}
+.boton-favorito {
+    color: white; 
+    background-color: transparent; 
+    border: none;
+}
+
+.boton-favorito:hover {
+    transform: scale(1.2);
+}
+
+.corazon-lleno {
+    color: red; 
+    font-size: 34px;
+    transition: transform 1s ease-in-out;
+}
+
+.corazon-vacio {
+    color: red; 
+    border-color: red; 
+    font-size: 34px;
+    transition: transform 1s ease-in-out;
+}
+
+
+/*Estilos mejorados Jugadores*/
+#dropdownMenuButton {
+    background-color: #ff6961;
+}
+
+
+/*Estilos mejorados Calendario*/
+.jumbotron {
+    background-color:#444444 !important; /* Color de fondo rosita */
+    padding: 2.5rem 2rem !important; /* Ajusta el espacio interior del jumbotron */
+}
+
+/* Estilo para las opciones del desplegable */
+.boton-seleccionar-equipo {
+    background-color: #f8817b; /* Fondo rosita */
+    color: white; /* Texto blanco */
+    border-color: #ff3823; /* Borde rojizo */
+    font-size: 1rem; /* Tamaño de fuente más grande */
+    padding: 0.5rem 1rem; /* Ajuste de padding para hacer el botón más grande */
+    border-radius: 0.5rem; /* Bordes redondeados */
+}
+/* Anular estilos para las opciones del desplegable */
+.boton-seleccionar-equipo option {
+    background-color: white; /* Fondo blanco */
+    color: black;
+}
+
+.boton-volver-a-calendario {
+    background-color: #f09893 !important;
+    border-radius: 0.5rem;
+    border-color: red;
+    margin-bottom: 1rem;
+}
+
+.boton-volver-a-calendario:hover {
+    background-color: #f1706270;
+    color: #fff;
+    border-color: #ff3823;
+}
+
+/*Estilos mejorados Calendario*/
+.container-fluid-clasificacion {
+    align-items: center !important;
+}
+
+/*Estilos AdminJugadores*/
+.titulo-admin-jugadores,
+.titulo-admin-Equipos {
+    text-align: center;
+    padding: 2rem;
+}
+.boton-insertar-usuarios {
+    background-color: #ff9688 !important;
+    color: white !important;
+}
+
+.boton-insertar-usuarios:hover {
+    color: black !important;
+}
+
+#pagination-links {
+    color: #ff3823 !important; 
+    margin-bottom: 1rem;
+}
+
+#pagination-links a {
+    color: black; /* Cambiar el color del texto a negro */
+}
+
+.boton-crear-jugador,
+.boton-crear-equipo,
+.boton-limpiar-mensajes,
+.boton-enviar-mensaje {
+    background-color: white !important;
+    color: #ff3823 !important;
+    border-color: #ff3823 !important;
+}
+
+.boton-crear-jugador:hover,
+.boton-crear-equipo:hover,
+.boton-limpiar-mensajes:hover,
+.boton-enviar-mensaje:hover {
+    background-color: #f1706270 !important;
+    color: black !important;
+    border-color: #ff3823;
+}
+
+/*Mejora estilos AdminPartidos*/
+.row-crearPartido {
+    align-items: center !important;
+    margin-bottom: 1rem; 
+}
+
+.bg-rojo-pastel {
+    background-color: #f1f1f1; /* Puedes ajustar este valor según el tono de rojo pastel que desees */
+}
+
+/* ESTILOS PERFIL USUARIO */
+.tarjeta-perfil {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50rem;
+    margin: 70px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.tarjeta-editar-perfil {
+    margin: 100px auto;
+    width: 50rem;
+    border-color: #ff3823 !important;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.boton-editar-perfil {
+    width: 50rem;
+    /* Ancho fijo del botón */
+    margin-left: auto;
+    /* Margen izquierdo automático */
+    margin-right: auto;
+    /* Margen derecho automático */
+    color: #ff6961;
+    border-color: #ff3823;
+}
+
+.boton-editar-perfil:hover {
+    background-color: #ff6961;
+    color: #fff;
+    border-color: #ff3823;
+}
+
+/* ESTILOS PANEL ADMINISTRADOR */
+.circle-container-wrapper {
+    width: 100%;
+    padding: 0 20px; /* Espacio a los lados */
+    display: flex;
+    justify-content: center; /* Centrar el contenedor dentro del wrapper */
+}
+
+.circle-container {
+    width: 80%;
+    max-width: 500px; /* Limitar el ancho máximo del contenedor */
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.circle {
+    width: 170px;
+    height: 200px;
+    background-color: #ff6961;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 170px;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: calc(50% - 20px); /* Para que los círculos ocupen la mitad del contenedor con espacio entre ellos */
+}
+
+.circle:hover {
+    background-color: #ff3823;
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.circle a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.circle:hover a {
+    font-size: 1.5em;
+}
+
+.jumbotron h1 {
+    font-size: 2.5rem;
+}
+
+.boton-flecha {
+    color: #ff3823 !important;
+    font-size: x-large !important;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+/*Estilos mejorados Layout*/
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    background-color: #ff3d36;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 2;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+.openbtn {
+    font-size: 20px;
+    width: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    border: 0px;
+    border-color: 0px;
+    position: absolute;
+    top: 10px; /* Ajuste para mantener el botón en la parte superior */
+    left: 6px; /* Ajuste para mantener el botón en la parte izquierda */
+}
+
+.openbtn:hover {
+    background-color: transparent;
+}
+
+.openbtn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: transparent;
+}
+
+.map-area {
+    cursor: pointer;
+}
+
+.map-container {
+    position: relative;
+}
+
+.map-area {
+    position: absolute;
+    display: block;
+}
+
+.title-container h1,
+.title-logo {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title-logo {
+    border: 2px solid red;
+    margin-left: 0px; /* Distancia fija del menú de la hamburguesa */
+    margin-right: 20px;
+    max-width: 100px; /* Tamaño máximo para logo */
+    flex-shrink: 0;
+}
+
+.navbar {
+    background-color: #ff3d36;
+    transition: all 0.3s ease;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap; /* Para permitir que los elementos se muevan a la siguiente línea */
+}
+
+.navbar-brand {
+    width: 35px;
+    margin-left: 0px;
+    margin-top: 7px;
+    transition: all 0.3s ease;
+    padding: 0.5em 3em;
+}
+
+.navbar-brand img {
+    transition: all 0.3s ease;
+    margin-left: 0px;
+    display: block;
+    max-width: 100px;
+    height: auto;
+}
+
+.dropdown-menu {
+    min-width: 10rem;
+    padding: 0.5rem 0;
+}
+
+.dropdown-admin .dropdown-toggle:after {
+    display: none;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.perfil-img {
+    max-width: 200px;
+    /* Ajusta este valor según tus preferencias */
+    max-height: 200px;
+}
+
+.tarjetas-fav {
+    width: 100%;
+    background-color: white;
+    color: #ff3823;
+}
+
+.boton-crear-hilo {
+    background-color: #ff6961 !important;
+    color: white !important;
+    border: #ff3823;
+    font-size: 16px;
+}
+
+.boton-crear-hilo:hover {
+    color: black !important;
+}
+
+.noticia-img {
+    height: 500px; /* Ajusta esta altura según tus necesidades */
+    object-fit: cover; /* Esto asegura que la imagen se recorte y mantenga sus proporciones */
+}
+
+.red-links a {
+    color: #ff3823;
+}
+

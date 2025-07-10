@@ -1,0 +1,32 @@
+﻿.ratingStar {
+    font-size: 0pt;
+    width: 13px;
+    height: 12px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 95%;
+}
+
+.filledRatingStar {
+    background-image: url(/assets/imagenes/iconos/star.png);
+    background-size: 95%;
+    height: 17px;
+    width: 17px;
+}
+
+.emptyRatingStar {
+    background-image: url(/assets/imagenes/iconos/starEmpty.png);
+    background-size: 95%;
+    height: 17px;
+    width: 17px;
+}
+
+.savedRatingStar {
+    background-image: url(/assets/imagenes/iconos/star.png);
+    background-size: 95%;
+    height: 17px;
+    width: 17px;
+}

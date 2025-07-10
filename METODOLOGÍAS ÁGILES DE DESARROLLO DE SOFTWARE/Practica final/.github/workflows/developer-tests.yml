@@ -1,0 +1,15 @@
+name: Tests
+
+on: push
+
+jobs:
+  launch-tests:
+    runs-on: ubuntu-latest
+    container: openjdk:8-jdk  # Cambia a una imagen más completa que no sea Alpine
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Developer Tests
+        run: ./mvnw test
+
+

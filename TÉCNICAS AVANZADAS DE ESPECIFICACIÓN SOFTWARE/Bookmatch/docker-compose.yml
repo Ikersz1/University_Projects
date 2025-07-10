@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      dockerfile: ./Dockerfile.dev
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    command: sh -c "npm i && npm run dev"

@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-input,
+  .form-textarea,
+  .form-multiselect,
+  .form-select,
+  .form-checkbox,
+  .form-radio {
+    @apply bg-white border border-zinc-200 focus:border-zinc-400 focus:ring-0 rounded-sm;
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-multiselect,
+  .form-select {
+    @apply py-2 px-3;
+  }
+
+  .form-input,
+  .form-textarea {
+    @apply placeholder-zinc-400;
+  }
+
+  .form-select {
+    @apply pr-10;
+  }
+
+  .form-checkbox,
+  .form-radio {
+    @apply text-zinc-800 rounded-sm;
+  }
+
+  .btn {
+    @apply text-sm font-medium inline-flex items-center justify-center rounded-lg leading-5 whitespace-nowrap transition duration-150 ease-in-out;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5;
+  }
+
+  .btn-md {
+    @apply px-4 py-2;
+  }
+
+  .btn-lg {
+    @apply px-5 py-2.5;
+  }
+}
+

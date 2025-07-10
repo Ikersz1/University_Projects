@@ -1,0 +1,16 @@
+madstodolist/repository/EquipoTest.class
+madstodolist/controller/DescripcionTest.class
+madstodolist/repository/TareaTest.class
+madstodolist/controller/UsuarioAdminTest.class
+madstodolist/service/TareaServiceTest.class
+madstodolist/service/EquipoServiceTest.class
+madstodolist/controller/ListaUsuariosTest.class
+madstodolist/controller/EquipoControllerTest.class
+madstodolist/controller/MenuControllerTest.class
+madstodolist/controller/BloqueoTest.class
+madstodolist/repository/UsuarioTest.class
+madstodolist/controller/UsuarioWebTest.class
+madstodolist/controller/ProteccionListadoTest.class
+madstodolist/controller/TareaWebTest.class
+madstodolist/controller/AcercaDeWebTest.class
+madstodolist/service/UsuarioServiceTest.class

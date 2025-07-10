@@ -1,0 +1,1 @@
+﻿insert into Noticia (titulo,fecha_public,contenido,imagen,productoraID) values ('Vinicius insultado en el Mestalla','2021-10-23','Visca el barcelona ','assets/imagenes/videojuegos/Fifa23.jpg',3);

@@ -1,0 +1,41 @@
+.w3-teal, .w3-sidebar { 
+        background-color: #ff3823 !important; 
+    }
+    .w3-bar-item {
+        color: white !important;
+        transition: background-color 0.3s ease; /* Agrega una transición suave */
+    }
+    /* Nuevo estilo para el contenedor de la barra lateral */
+    #mySidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+    }
+    .bottom-links {
+        position: absolute;
+        bottom: 0;
+        margin-top: auto;
+        width: 100%;
+    }
+    /* Agrega esta regla para el estado hover */
+    .w3-bar-item:hover, .w3-button:hover {
+        background-color: white !important;
+        color: #ff3823 !important; /* Cambia el color del texto para mantener contraste */
+    }
+    /* Cambia el color del botón al hacer hover y cuando está activo */
+    #openNav:hover, #openNav:focus {
+        color: white !important;
+    }
+    #openNav {
+    background-color: #ff3823; /* Color de fondo original */
+    color: white !important; /* Color del texto (ícono) original */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para ambos, fondo y color del texto */
+}
+
+/* Estilos para el hover del botón de la barra lateral */
+#openNav:hover {
+    background-color: white !important; /* Cambio a fondo blanco */
+    color: #ff3823 !important; /* Cambio el color del texto a rojo */
+}

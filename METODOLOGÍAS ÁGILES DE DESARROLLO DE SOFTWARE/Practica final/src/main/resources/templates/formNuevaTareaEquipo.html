@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head (titulo='Nueva Tarea')"></head>
+
+<body>
+
+<!-- Mostrar la barra de menú -->
+<div th:replace="fragments :: navbar"></div>
+
+<div class="container-fluid">
+
+  <!-- Título de la tarea con comprobación de si el usuario es null -->
+  <h2 th:text="'Nueva tarea para el equipo ' + (${equipo != null} ? ${equipo.nombre} : 'Desconocido')"></h2>
+
+  <form method="post" th:action="@{/equipos/{id}/tareas/nueva(id=${equipo != null ? equipo.id : ''})}" th:object="${tareaData}">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="titulo">Título de la tarea:</label>
+        <input class="form-control" id="titulo" name="titulo" required th:field="*{titulo}" type="text"/>
+      </div>
+      <button class="btn btn-primary" type="submit">Crear tarea</button>
+      <a class="btn btn-link" th:href="@{/equipos/{id}/tareas(id=${equipo != null ? equipo.id : ''})}">Cancelar</a>
+    </div>
+  </form>
+</div>
+
+<div th:replace="fragments::javascript"></div>
+
+</body>
+</html>

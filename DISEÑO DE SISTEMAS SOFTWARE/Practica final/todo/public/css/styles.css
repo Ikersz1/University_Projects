@@ -1,0 +1,82 @@
+.w3-teal, .w3-sidebar { 
+        background-color: #ff3823 !important; 
+    }
+    .w3-bar-item {
+        color: white !important;
+        transition: background-color 0.3s ease; /* Agrega una transición suave */
+    }
+    /* Nuevo estilo para el contenedor de la barra lateral */
+    #mySidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+    }
+    .bottom-links {
+        position: absolute;
+        bottom: 0;
+        margin-top: auto;
+        width: 100%;
+    }
+    /* Agrega esta regla para el estado hover */
+    .w3-bar-item:hover, .w3-button:hover {
+        background-color: white !important;
+        color: #ff3823 !important; /* Cambia el color del texto para mantener contraste */
+    }
+    /* Cambia el color del botón al hacer hover y cuando está activo */
+    #openNav:hover, #openNav:focus {
+        color: white !important;
+    }
+    #openNav {
+    background-color: #ff3823; /* Color de fondo original */
+    color: white !important; /* Color del texto (ícono) original */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para ambos, fondo y color del texto */
+}
+
+.w3-container h1 {
+    text-align: left; /* Centra el título */
+    font-size: 50px; /* Aumenta el tamaño de la fuente */
+    margin-top: 1px; /* Ajusta el margen superior según necesites */
+    
+
+/* Estilos para el hover del botón de la barra lateral */
+#openNav:hover {
+    background-color: white !important; /* Cambio a fondo blanco */
+    color: #ff3823 !important; /* Cambio el color del texto a rojo */
+}
+/* Roboto Flex con peso 400 */
+.roboto-flex-title {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Peso de la fuente */
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 100,
+    "GRAD" 0,
+    "XOPQ" 96,
+    "XTRA" 468,
+    "YOPQ" 79,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+
+/* Hurricane para uso regular */
+.hurricane-regular {
+  font-family: "Hurricane", cursive;
+  font-weight: 400; /* Aunque Hurricane solo tiene un peso, es buena práctica especificarlo */
+  font-style: normal;
+}
+.title-container h1, .title-logo {
+    display: inline-block; /* Hace que el logo y el título se muestren en línea */
+    vertical-align: middle; /* Alinea verticalmente el logo y el título */
+}
+
+.title-logo {
+    margin-right: 20px; /* Espacio a la derecha de la imagen */
+    height: 100px; /* O la altura que desees para tu logo */
+}

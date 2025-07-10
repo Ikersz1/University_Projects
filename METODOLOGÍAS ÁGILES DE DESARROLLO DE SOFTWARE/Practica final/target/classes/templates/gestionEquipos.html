@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head (titulo='Gestión de Equipos')"></head>
+<body>
+<!-- Barra de menú -->
+<div th:replace="fragments :: navbar"></div>
+
+<div class="container mt-3">
+    <h2>Gestión de Equipos</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Equipo</th>
+            <th>Creador</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="equipo : ${equipos}">
+            <td th:text="${equipo.id}"></td>
+            <td th:text="${equipo.nombre}"></td>
+            <td th:text="${equipo.creador}"></td>
+            <td>
+                <!-- Botón para renombrar -->
+                <a th:href="@{'/equipos/' + ${equipo.id} + '/editar'}" class="btn btn-primary btn-sm">Renombrar</a>
+                <!-- Botón para eliminar -->
+                <form th:action="@{'/equipos/' + ${equipo.id} + '/eliminar'}" method="post" style="display: inline;">
+                    <button class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="fragments :: javascript"></div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head (titulo='Nueva Subtarea')"></head>
+
+<body>
+<div th:replace="fragments :: navbar"></div>
+
+<div class="container-fluid">
+    <h2 th:text="'Nueva subtarea para la tarea: ' + ${tarea.titulo}"></h2>
+    <form method="post" th:action="@{/tareas/{id}/subtareas/nueva(id=${tarea.id})}" th:object="${subtareaData}">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="nombre">Nombre de la subtarea:</label>
+                <input class="form-control" id="nombre" name="nombre" required th:field="*{nombre}" type="text"/>
+            </div>
+            <button class="btn btn-primary" type="submit">Crear subtarea</button>
+            <a class="btn btn-link" th:href="@{/usuarios/{id}/tareas(id=${tarea.usuarioId})}">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments::javascript"></div>
+</body>
+</html>

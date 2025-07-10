@@ -1,0 +1,53 @@
+TUTORIAL PARA DESPLEGAR SD WINDOWS
+
+Ruta mi carpeta donde esta la práctica C:\UNIVERSIDAD\SD\Práctica\P3\SD-2
+
+Primero, desplegamos los servidores:
+-1  .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+-2  .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+Segundo, el productor y el consumidor, creamos sus topics:
+-1  .\bin\windows\kafka-topics.bat --create --topic customer_responses --bootstrap-server localhost:9092
+-2  .\bin\windows\kafka-topics.bat --create --topic taxi_requests --bootstrap-server localhost:9092
+-3  .\bin\windows\kafka-topics.bat --create --topic taxi_status --bootstrap-server localhost:9092
+-4  .\bin\windows\kafka-topics.bat --create --topic taxi_instructions --bootstrap-server localhost:9092
+-5  .\bin\windows\kafka-topics.bat --create --topic map_updates --bootstrap-server localhost:9092
+
+
+Tercero, desplegamos el programa.
+-1 python EC_Central.py --listen_port 8000 --kafka_bootstrap_servers localhost:9092 --locations_file EC_locations.json
+-2 python EC_DE.py localhost 8000 localhost:9092 9000 1 (ESTE ULTIMO 1 YA NO HACE FALTA SI LO PONGO DA ERROR)
+-3 python EC_Costumer.py localhost:9092 a EC_Requests.json 10 10
+-4 python EC_S.py localhost 9000
+
+-5 python EC_Registry.py (SI QUEREMOS USAR REGISTRAR TAXI)
+-6 python EC_CTC.py 
+
+
+COMANDO PARA VER LOS TOPICS CREADOS: .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+
+COMANDO PARA VER LOS MENSAJES DE UNO DE LOS TOPICS:
+\kafka\bin\windows\kafka-console-consumer.bat --topic <nombre_del_topic> --from-beginning --bootstrap-server localhost:9092
+
+
+COMANDO PARA ENTRAR EN EL ENTORNO VIRTUAL:
+myenv\Scripts\actívate
+
+
+ESQUEMA DE LOS TOPICS
+
+CLIENTE -> taxi_requests -> CENTRAL
+CLIENTE <- customer_responses <- CENTRAL
+
+TAXI -> taxi_status -> CENTRAL
+TAXI <- taxi_instructions <- CENTRAL
+
+
+
+
+
+
+
+
