@@ -1,0 +1,200 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/wiki"></ion-back-button>
+    </ion-buttons>
+  
+    <ion-title>{{ title + " (" + category + ")"}}</ion-title>
+  
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon slot="icon-only" [name]="isFavorite ? 'heart' : 'heart-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Facts about {{ title }}
+        <ion-icon
+          style="float: right"
+          [name]="isFavorite ? 'star' : 'star-outline'"
+          [title]="isFavorite ? 'remove from favorites' : 'set as favorite'"
+          (click)="toggleFavorite()">
+        </ion-icon>
+      </ion-card-title>
+    </ion-card-header>    
+
+    <ion-card-content [ngSwitch]="category">
+      <!-- Lista para People -->
+      <ion-list *ngSwitchCase="'People'">
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-badge slot="end">{{ people.name }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Height</ion-label>
+          <ion-badge slot="end">{{ people.height }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Mass</ion-label>
+          <ion-badge slot="end">{{ people.mass }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hair Color</ion-label>
+          <ion-badge slot="end">{{ people.hair_color }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Skin Color</ion-label>
+          <ion-badge slot="end">{{ people.skin_color }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Eye Color</ion-label>
+          <ion-badge slot="end">{{ people.eye_color }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Birth Year</ion-label>
+          <ion-badge slot="end">{{ people.birth_year }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Gender</ion-label>
+          <ion-badge slot="end">{{ people.gender }}</ion-badge>
+        </ion-item>
+      </ion-list>
+
+      <!-- Lista para Starships -->
+      <ion-list *ngSwitchCase="'Starships'">
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-badge slot="end">{{ starship.name }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cargo Capacity</ion-label>
+          <ion-badge slot="end">{{ starship.cargo_capacity }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cost in Credits</ion-label>
+          <ion-badge slot="end">{{ starship.cost_in_credits }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Crew</ion-label>
+          <ion-badge slot="end">{{ starship.crew }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hyperdrive Rating</ion-label>
+          <ion-badge slot="end">{{ starship.hyperdrive_rating }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Length</ion-label>
+          <ion-badge slot="end">{{ starship.length }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Manufacturer</ion-label>
+          <ion-badge slot="end">{{ starship.manufacturer }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Model</ion-label>
+          <ion-badge slot="end">{{ starship.model }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Passengers</ion-label>
+          <ion-badge slot="end">{{ starship.passengers }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Starship Class</ion-label>
+          <ion-badge slot="end">{{ starship.starship_class }}</ion-badge>
+        </ion-item>
+      </ion-list>
+
+      <!-- Lista para Species -->
+      <ion-list *ngSwitchCase="'Species'">
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-badge slot="end">{{ species.name }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Average Height</ion-label>
+          <ion-badge slot="end">{{ species.average_height }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Average Lifespan</ion-label>
+          <ion-badge slot="end">{{ species.average_lifespan }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Classification</ion-label>
+          <ion-badge slot="end">{{ species.classification }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Designation</ion-label>
+          <ion-badge slot="end">{{ species.designation }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Eye Colors</ion-label>
+          <ion-badge slot="end">{{ species.eye_colors }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Hair Colors</ion-label>
+          <ion-badge slot="end">{{ species.hair_colors }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Language</ion-label>
+          <ion-badge slot="end">{{ species.language }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Skin Colors</ion-label>
+          <ion-badge slot="end">{{ species.skin_colors }}</ion-badge>
+        </ion-item>
+      </ion-list>
+
+      <!-- Lista para Planets -->
+      <ion-list *ngSwitchCase="'Planets'">
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-badge slot="end">{{ planet.name }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Climate</ion-label>
+          <ion-badge slot="end">{{ planet.climate }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Diameter</ion-label>
+          <ion-badge slot="end">{{ planet.diameter }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Gravity</ion-label>
+          <ion-badge slot="end">{{ planet.gravity }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Orbital Period</ion-label>
+          <ion-badge slot="end">{{ planet.orbital_period }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Population</ion-label>
+          <ion-badge slot="end">{{ planet.population }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Rotation Period</ion-label>
+          <ion-badge slot="end">{{ planet.rotation_period }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Surface Water</ion-label>
+          <ion-badge slot="end">{{ planet.surface_water }}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Terrain</ion-label>
+          <ion-badge slot="end">{{ planet.terrain }}</ion-badge>
+        </ion-item>
+      </ion-list>
+
+      <!-- Mensaje por defecto si no coincide con ninguna categoría -->
+      <ion-list *ngSwitchDefault>
+        <ion-item>
+          <ion-label>No data available for this category</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,28 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .alert-box {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  .alert-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+  }
+  
+  .alert-buttons ion-button {
+    width: 100px;
+    font-size: 1.1rem;
+  }
+  

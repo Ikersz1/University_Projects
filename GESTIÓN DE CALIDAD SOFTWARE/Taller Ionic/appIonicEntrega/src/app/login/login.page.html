@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formLogin" class="list-form" style="padding: 16px;">
+    
+    <!-- Campo EMAIL -->
+    <ion-item>
+      <ion-label position="floating">Tu correo</ion-label>
+      <ion-input color="secondary" type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-text color="warning" *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.hasError('required')">
+      <p>Debes escribir tu e-mail</p>
+    </ion-text>
+    <ion-text color="warning" *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.hasError('email')">
+      <p>Debes escribir un correo correcto</p>
+    </ion-text>
+
+    <!-- Campo CONTRASEÑA -->
+    <ion-item>
+      <ion-label position="floating">Tu contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-text color="warning" *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.hasError('required')">
+      <p>Debes escribir tu contraseña</p>
+    </ion-text>
+    <ion-text color="warning" *ngIf="formLogin.get('password')?.touched && formLogin.get('password')?.hasError('minlength')">
+      <p>La contraseña debe tener al menos 6 caracteres</p>
+    </ion-text>
+
+    <!-- BOTÓN LOGIN -->
+    <div style="margin-top: 24px;">
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark"
+                  (click)="doLogin()" [disabled]="!formLogin.valid" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        Entrar
+      </ion-button>
+    </div>
+
+  </form>
+
+  <!-- ALERTA DE ERROR -->
+  <ion-alert
+    [isOpen]="error !== ''"
+    header="Warning!"
+    [message]="error"
+    [buttons]="['OK']"
+    (didDismiss)="error = ''">
+  </ion-alert>
+
+</ion-content>

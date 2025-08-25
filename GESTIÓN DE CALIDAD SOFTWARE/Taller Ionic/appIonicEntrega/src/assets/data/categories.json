@@ -1,0 +1,23 @@
+[
+    {
+      "name": "People",
+      "image": "people.jpg",
+      "url": "people/"
+    },
+    {
+      "name": "Planets",
+      "image": "planets.jpg",
+      "url": "planets/"
+    },
+    {
+      "name": "Species",
+      "image": "species.jpg",
+      "url": "species/"
+    },
+    {
+      "name": "Starships",
+      "image": "starships.jpg",
+      "url": "starships/"
+    }
+  ]
+  

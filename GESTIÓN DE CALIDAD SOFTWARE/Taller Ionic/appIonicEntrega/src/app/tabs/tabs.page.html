@@ -1,0 +1,23 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="wiki" [routerLink]="['/tabs/wiki']">
+      <ion-icon name="book"></ion-icon>
+      <ion-label>Wiki</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="favourites" [routerLink]="['/tabs/Favourites']">
+      <ion-icon name="star"></ion-icon>
+      <ion-label>Favourites</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about" [routerLink]="['/tabs/about']">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="exit" [routerLink]="['/tabs/exit']">
+      <ion-icon name="exit"></ion-icon>
+      <ion-label>Exit</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
